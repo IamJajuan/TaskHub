@@ -1,5 +1,6 @@
 import { BrowserRouter as Router,} from 'react-router-dom';
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <div className = "app-content" >
 
         </div>
+        <Footer />
       </Router>
     </div>
   );
