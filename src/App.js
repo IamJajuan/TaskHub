@@ -4,9 +4,12 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app-container">
       <Router>
         <Header isAuth = {true} />
+        <div className = "app-content" >
+
+        </div>
       </Router>
     </div>
   );
