@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+export const HeaderStyles = makeStyles(() => ({
 
     nav: {
         display:'flex',
@@ -10,4 +10,3 @@ const useStyles = makeStyles((theme) => ({
       },
 }))
 
-export const HeaderStyles = useStyles
