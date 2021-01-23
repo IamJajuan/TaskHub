@@ -1,4 +1,4 @@
-import { Grid,Card,CardContent,CardActions,Button, Typography,IconButton, Modal } from '@material-ui/core'
+import { Grid,Card,CardContent,CardActions,Button, Typography,IconButton } from '@material-ui/core'
 import { Edit ,Delete} from '@material-ui/icons';
 import React, {useState} from 'react'
 import { ProjectCardStyles } from '../styles/ProjectCard'
@@ -20,13 +20,10 @@ const ProjectCard = ({id,name,description}) => {
 
     return (
             <Grid item key = {id} xs={12} sm={6} md={4}>
-              <Modal open = {open} onClose = {toggleModal}>
-                <div>
-                <ProjectForm submit = {editProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} description = {description}  name = {name}/>
+              
+                <ProjectForm open = {open} submit = {editProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} description = {description}  name = {name}/>
 
-                </div>
-              </Modal>
-              <Card className={classes.projectCard}>
+                    <Card className={classes.projectCard}>
               
                   <CardContent className={classes.projectCardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
