@@ -46,7 +46,7 @@ const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
     )
 }
 
-ProjectForm.prototype = {
+ProjectForm.propTypes = {
 
     open: PropTypes.bool.isRequired,
     toggleModal: PropTypes.func.isRequired,

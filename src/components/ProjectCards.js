@@ -19,7 +19,7 @@ const ProjectCards = ({projects}) => {
     )
 }
 
-ProjectCards.prototype = {
+ProjectCards.propTypes = {
     projects:PropTypes.arrayOf(PropTypes.object).isRequired
 }
 export default ProjectCards
