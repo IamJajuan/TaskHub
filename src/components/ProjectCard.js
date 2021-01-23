@@ -1,17 +1,31 @@
-import { Grid,Card,CardContent,CardActions,Button, Typography,IconButton } from '@material-ui/core'
+import { Grid,Card,CardContent,CardActions,Button, Typography,IconButton, Modal } from '@material-ui/core'
 import { Edit ,Delete} from '@material-ui/icons';
-import React from 'react'
+import React, {useState} from 'react'
 import { ProjectCardStyles } from '../styles/ProjectCard'
 import PropTypes from 'prop-types'
+import ProjectForm from './ProjectForm';
 
 
 
 const ProjectCard = ({id,name,description}) => {
 
     const classes = ProjectCardStyles()
+    const [open, setOpen] = useState(false)
+    const toggleModal = () => setOpen(prev => !prev)
+
+    const editProject = (vals,close) => {
+      console.log(vals)
+      close()
+    }
 
     return (
             <Grid item key = {id} xs={12} sm={6} md={4}>
+              <Modal open = {open} onClose = {toggleModal}>
+                <div>
+                <ProjectForm submit = {editProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} description = {description}  name = {name}/>
+
+                </div>
+              </Modal>
               <Card className={classes.projectCard}>
               
                   <CardContent className={classes.projectCardContent}>
@@ -24,7 +38,7 @@ const ProjectCard = ({id,name,description}) => {
                   </CardContent>
                   <CardActions className = {classes.projectCardActions}>
                    <div>
-                   <IconButton >
+                   <IconButton onClick = {toggleModal} >
                        <Edit />
                    </IconButton>
                    <IconButton >
