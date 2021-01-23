@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch,} from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import PrivateRoute from "./components/PrivateRoute";
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp'
@@ -15,7 +16,9 @@ function App() {
         <div className = "app-content" >
 
           <Switch>
-          <Route exact path = "/" component = {Home} />
+          <PrivateRoute isAuth = {false} exact path = "/" >
+            <Home />
+          </PrivateRoute>
           <Route path = "/login" component = {Login} />
           <Route path = "/signup" component = {SignUp} />
           </Switch>
