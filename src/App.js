@@ -1,7 +1,8 @@
-import { BrowserRouter as Router,} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch,} from 'react-router-dom';
 import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -9,6 +10,10 @@ function App() {
       <Router>
         <Header isAuth = {true} />
         <div className = "app-content" >
+
+          <Switch>
+          <Route exact path = "/" component = {Home} />
+          </Switch>
 
         </div>
         <Footer />
