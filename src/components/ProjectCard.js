@@ -4,14 +4,21 @@ import React, {useState} from 'react'
 import { ProjectCardStyles } from '../styles/ProjectCard'
 import PropTypes from 'prop-types'
 import ProjectForm from './ProjectForm';
+import DeleteConfirm from './DeleteConfirm';
 
 
 
 const ProjectCard = ({id,name,description}) => {
 
     const classes = ProjectCardStyles()
-    const [open, setOpen] = useState(false)
-    const toggleModal = () => setOpen(prev => !prev)
+    const [openForm, setOpenForm] = useState(false)
+    const [openAlert, setOpenAlert] = useState(false)
+    const toggleModal = () => setOpenForm(prev => !prev)
+    const toggleAlert = () => setOpenAlert(prev => !prev)
+    const handleDelete = () => {
+
+      toggleAlert()
+    } 
 
     const editProject = (vals,close) => {
       console.log(vals)
@@ -20,8 +27,10 @@ const ProjectCard = ({id,name,description}) => {
 
     return (
             <Grid item key = {id} xs={12} sm={6} md={4}>
+
+              <DeleteConfirm handleDelete = {handleDelete} item = {"Project"} open = {openAlert} toggleAlert = {toggleAlert}/>
               
-                <ProjectForm open = {open} submit = {editProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} description = {description}  name = {name}/>
+                <ProjectForm open = {openForm} submit = {editProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} description = {description}  name = {name}/>
 
                     <Card className={classes.projectCard}>
               
@@ -38,7 +47,7 @@ const ProjectCard = ({id,name,description}) => {
                    <IconButton onClick = {toggleModal} >
                        <Edit />
                    </IconButton>
-                   <IconButton >
+                   <IconButton onClick = {toggleAlert} >
                        <Delete />
                    </IconButton>
                    </div>
