@@ -20,7 +20,7 @@ const ProjectsHeader = ({toggleModal}) => {
     )
 }
 
-ProjectsHeader.prototype = {
+ProjectsHeader.propTypes = {
     toggleModal:PropTypes.func.isRequired
 }
 export default ProjectsHeader

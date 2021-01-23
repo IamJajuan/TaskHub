@@ -62,7 +62,7 @@ const ProjectCard = ({id,name,description}) => {
     )
 }
 
-ProjectCard.prototype = {
+ProjectCard.propTypes = {
 
   id:PropTypes.string.isRequired,
   description:PropTypes.string.isRequired,
