@@ -1,4 +1,4 @@
-import { Container, Modal } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import React,{useState} from 'react'
 import ProjectsHeader from '../components/ProjectsHeader'
 import ProjectCards from '../components/ProjectCards'
@@ -22,12 +22,10 @@ const Home = () => {
 
     return (
         <Container component = "main" maxWidth="md">
-            <Modal open = {open} onClose = {toggleModal}>
                 <div>
-                <ProjectForm submit = {addProject} name = {""} description = {""} toggleModal = {toggleModal} title = {"Add"} />
+                <ProjectForm open = {open} submit = {addProject} name = {""} description = {""} toggleModal = {toggleModal} title = {"Add"} />
 
                     </div>
-            </Modal>
 <div>
 <ProjectsHeader toggleModal = {toggleModal} />
 <ProjectCards projects = {projects} />

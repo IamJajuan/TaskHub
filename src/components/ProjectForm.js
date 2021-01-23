@@ -1,9 +1,9 @@
-import { TextField,Button } from '@material-ui/core'
+import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
 import React,{useState} from 'react'
 import PropTypes from 'prop-types'
 import {ProjectFormStyles} from '../styles/ProjectForm'
 
-const ProjectForm = ({id,name,description,title,toggleModal,submit}) => {
+const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
     
     const classes = ProjectFormStyles()
     
@@ -18,21 +18,31 @@ const ProjectForm = ({id,name,description,title,toggleModal,submit}) => {
 
     }
   
-    const handleSubmit = () => {
-
+    const handleSubmit = (event) => {
+       
+        event.preventDefault()
        submit({id,...values},toggleModal) 
        setValues({name:"",description:""})
     }
     return (
-        <div  className = {classes.projectForm}>
-            <h2 className = {classes.projectTitle}> {`${title} Project`} </h2>
-            <form onSubmit = {handleSubmit}>
+       <Dialog open = {open} onClose = {toggleModal} >
+<DialogTitle className = {classes.projectTitle}>{`${title} Project`} </DialogTitle>
+<form onSubmit = {handleSubmit}>
+
+<DialogContent>
                 <TextField onChange = {handleChange} required className = {classes.projectInput} label = "Name" id = "name" name = "name" fullWidth  value = {values.name} />
                 <TextField onChange = {handleChange} className = {classes.projectInput}  label = "Description" id = "description" name = "description" fullWidth value = {values.description} />
-                <Button fullWidth type = "submit" color = "primary" variant = "contained"> {`${title} Project`} </Button >
 
-            </form>
-        </div>
+</DialogContent>
+<DialogActions>
+<Button onClick = {toggleModal}  type = "button" color = "primary" > {`Cancel`} </Button >
+<Button  type = "submit" color = "primary" > {`${title} Project`} </Button >
+
+
+</DialogActions>
+</form>
+
+       </Dialog>
     )
 }
 
