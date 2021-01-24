@@ -17,9 +17,9 @@ const Header = ({isAuth}) => {
     </Typography>
     <div>
        {isAuth ? <Fragment>
-           <NavLink to = "/" color = "inherit" component = {Button}>
+           <Button to = "/" color = "inherit" component = {NavLink}>
                Home
-           </NavLink>
+           </Button>
         <Button color = "inherit" >Logout </Button>
        </Fragment> : <Fragment></Fragment>}
 
