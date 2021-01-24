@@ -7,7 +7,7 @@ const DeleteConfirm = ({handleDelete,open,item, toggleAlert}) => {
        
             <Dialog open = {open} onClose = {toggleAlert}>
                 <DialogTitle>{`Delete ${item}`} </DialogTitle>
-                <DialogContent> <DialogContentText>{`Are you sure you want to delete ${item.toLowerCase()}?`}</DialogContentText> </DialogContent>
+                <DialogContent> <DialogContentText>{`Are you sure you want to delete this ${item.toLowerCase()}?`}</DialogContentText> </DialogContent>
                 <DialogActions>
                     <Button onClick = {handleDelete} color = "primary" > Yes</Button>
                     <Button onClick = {toggleAlert} color = "primary" > No</Button>
