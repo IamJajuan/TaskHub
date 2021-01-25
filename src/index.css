@@ -8,6 +8,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.link  {
+
+  text-decoration: none;
+  color: black;
+}
+
+.clickable:hover {
+
+  opacity: .6;
+  cursor: pointer;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -5,6 +5,7 @@ import { ProjectCardStyles } from '../styles/ProjectCard'
 import PropTypes from 'prop-types'
 import ProjectForm from './ProjectForm';
 import DeleteConfirm from './DeleteConfirm';
+import { Link } from 'react-router-dom';
 
 
 
@@ -51,10 +52,10 @@ const ProjectCard = ({id,name,description}) => {
                        <Delete />
                    </IconButton>
                    </div>
+<Button to = {`project/${id}`} type = "button" component = {Link}> 
 
-                   <Button size="small" >
-                       View
-                   </Button>
+View
+</Button>
 
                   </CardActions>
                 </Card>

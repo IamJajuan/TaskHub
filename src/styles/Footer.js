@@ -22,6 +22,4 @@ export const FooterStyles = makeStyles((theme) => ({
         color:"white"
     },
 
-   
-   
 }))
