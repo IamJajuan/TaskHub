@@ -1,11 +1,11 @@
 import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
 import React,{useState} from 'react'
 import PropTypes from 'prop-types'
-import {ProjectFormStyles} from '../styles/ProjectForm'
+import {FormStyles} from '../styles/Form'
 
 const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
     
-    const classes = ProjectFormStyles()
+    const classes = FormStyles()
     
     const [values, setValues] = useState({name , description})
 
@@ -26,12 +26,12 @@ const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
     }
     return (
        <Dialog open = {open} onClose = {toggleModal} >
-<DialogTitle className = {classes.projectTitle}>{`${title} Project`} </DialogTitle>
+<DialogTitle className = {classes.title}>{`${title} Project`} </DialogTitle>
 <form onSubmit = {handleSubmit}>
 
 <DialogContent>
-                <TextField onChange = {handleChange} required className = {classes.projectInput} label = "Name" id = "name" name = "name" fullWidth  value = {values.name} />
-                <TextField onChange = {handleChange} className = {classes.projectInput}  label = "Description" id = "description" name = "description" fullWidth value = {values.description} />
+                <TextField onChange = {handleChange} required className = {classes.input} label = "Name" id = "name" name = "name" fullWidth  value = {values.name} />
+                <TextField onChange = {handleChange} className = {classes.input}  label = "Description" id = "description" name = "description" fullWidth value = {values.description} />
 
 </DialogContent>
 <DialogActions>
