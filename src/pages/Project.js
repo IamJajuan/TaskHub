@@ -1,5 +1,5 @@
 import { Box,Typography } from '@material-ui/core'
-import React from 'react'
+import React,{useState} from 'react'
 import { useParams } from 'react-router-dom'
 import Column from '../components/Column'
 import NewColumn from '../components/NewColumn'
@@ -19,6 +19,9 @@ const Project = () => {
     ] 
     }
     const {sections,name} = project
+    const [openForm, setOpenForm] = useState(false)
+    const toggleModal = () => setOpenForm(prev => !prev)
+
     return (
        <Box  >
           <Box  display = "flex" justifyContent = "space-between" >
@@ -30,8 +33,8 @@ const Project = () => {
          
         <Box >
         <Box  display ="flex" width = "fit-content" >
-          {sections.slice(0,1) .map(item => <Column {...item} />)}
-          <NewColumn />
+          {sections.slice(0,1) .map(item => <Column  {...item} />)}
+          <NewColumn open = {openForm} toggleModal = {toggleModal}/>
           </Box>
  
         </Box>
