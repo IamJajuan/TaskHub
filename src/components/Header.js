@@ -10,7 +10,7 @@ const Header = ({isAuth}) => {
      const classes = HeaderStyles()
     return (
         <header>
-            <AppBar position = "static">
+            <AppBar position = "fixed">
 <Toolbar  className = {classes.nav} >
     <Typography variant = "h6">
         Taskhub

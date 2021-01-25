@@ -6,7 +6,7 @@ import { FooterStyles } from '../styles/Footer'
 const Footer = () => {
     const classes = FooterStyles()
     return (
-        <footer className = {classes.footer}>
+        <footer className = {[classes.footer]}>
             <Toolbar className = {classes.footerContainer}  >
 <Typography variant = "body1" >
 Built by Jajuan Hall
