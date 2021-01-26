@@ -9,13 +9,11 @@ const Project = () => {
 
     const {id} = useParams()
     const project = {
-        id,name:"Project",sections:[{id:"2" , name:"Doing", tasks:[{name:"Do this" ,description:"Lighting Style",cost:"10",priority:"medium",stage:"Spec need"}]}, 
-        {name:"Do this" ,description:"Lighting Style",cost:"10",priority:"medium",stage:"Spec need"},
-        {name:"Do this" ,description:"Lighting Style",cost:"10",priority:"medium",stage:"Spec need"},
-        {name:"Do this" ,description:"Lighting Style",cost:"10",priority:"medium",stage:"Spec need"},
-        {name:"Do this" ,description:"Lighting Style",cost:"10",priority:"medium",stage:"Spec need"},
-        {name:"Do this" ,description:"Lighting Style",cost:"10",priority:"medium",stage:"Spec need"},
-        {name:"Do this" ,description:"Lighting Style",cost:"10",priority:"medium",stage:"Spec need"}
+        id,name:"Project",sections:[{id:"1" , name:"Doing", tasks:[{name:"Do this" ,description:"Lighting Style",id:"1"},{name:"Backlog",id:"2"}]}, 
+        {name:"Planned" ,description:"Lighting Style",id:"2"},
+        {name:"Complete" ,description:"Fire Style", id:"3"},
+        {name:"Testing" ,description:"Earth Style", id:"4"},
+
     ] 
     }
     const {sections,name} = project
@@ -33,7 +31,7 @@ const Project = () => {
          
         <Box >
         <Box  display ="flex" width = "fit-content" >
-          {sections.slice(0,1) .map(item => <Column  {...item} />)}
+          {sections.slice(0,3) .map(item => <Column  key = {item.id} {...item} />)}
           <NewColumn open = {openForm} toggleModal = {toggleModal}/>
           </Box>
  

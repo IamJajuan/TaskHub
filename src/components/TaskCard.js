@@ -1,38 +1,39 @@
-import React from 'react'
+import React,{useState} from 'react'
 import PropTypes from 'prop-types'
-import {  Card, Typography,CardContent,Box } from '@material-ui/core'
+import {  Card, Typography,CardContent,Box} from '@material-ui/core'
+import TaskForm from './TaskForm'
 
-const TaskCard = ({name,description,stage,priority,cost}) => {
+const TaskCard = ({name,description,id}) => {
     
-    const toggleModal = () => console.log('hrll')
+  const [open, setOpen] = useState(false)
+
+  const editTask = ({vals},close) => {
+      console.log(vals)
+      close()
+  }
+    const toggleModal = () => setOpen(prev => !prev)
     return (
         <Box  marginTop = {"1em"}>
             
-            <Card onClick = {toggleModal}>
+            <TaskForm submit = {editTask}  open = {open} title = "Edit" toggleModal = {toggleModal} name = {name}  id ={id} description ={description} />
            
-            <CardContent  className ="clickable">
-        
+                  <Card className ="clickable" onClick = {toggleModal} >
+       
+                <CardContent  >
+            <Box  display = 'flex'>
             <Typography gutterBottom variant="h5" component="h2">
-            {name}
-          </Typography>
-        <Typography variant="body2" component="p">
-        
-          {description}
-        </Typography>
-        <Box  marginTop =".8em" display ="flex">
-<Box lineHeight = "1.5" bgcolor = {"#ff7511"} color = {"black"} borderRadius ={".8em"} padding = {"0 .5em"} marginRight = {".5em"}>{priority}</Box>
-<Box marginRight = {".5em"}>{stage}</Box>
-<Box lineHeight = "1.5" bgcolor = {"#cbd4db"} color = {"black"} borderRadius ={".8em"} padding = {"0 .5em"} marginRight = {".5em"}>{cost}</Box>
-
-
-        </Box>
-      </CardContent>
-
-            </Card>
-        
+                {name}
+              </Typography>
+            </Box>
+            <Typography variant="body2" component="p">
             
-            
-            
+              {description}
+            </Typography>
+         
+          </CardContent>
+    
+                </Card>           
+                        
         </Box>
     )
 }
@@ -41,9 +42,8 @@ TaskCard.propTypes = {
 
     name:PropTypes.string.isRequired,
     description:PropTypes.string,
-    priority:PropTypes.string,
-    cost:PropTypes.string,
-    stage:PropTypes.string,
+    id:PropTypes.string.isRequired,
+
 
 }
 
