@@ -9,7 +9,6 @@ const Header = ({isAuth}) => {
 
      const classes = HeaderStyles()
     return (
-        <header>
             <AppBar position = "fixed">
 <Toolbar  className = {classes.nav} >
     <Typography variant = "h6">
@@ -26,7 +25,6 @@ const Header = ({isAuth}) => {
     </div>
 </Toolbar>
             </AppBar>
-        </header>
     )
 }
 
