@@ -16,7 +16,7 @@ body {
 
 .clickable:hover {
 
-  opacity: .6;
+  background-color:rgb(247, 249, 252);
   cursor: pointer;
 }
 code {

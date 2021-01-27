@@ -30,7 +30,7 @@ const Project = () => {
 
          
         <Box >
-        <Box  display ="flex" width = "fit-content" >
+        <Box marginTop = "1em" display ="flex" width = "fit-content" >
           {sections.slice(0,3) .map(item => <Column  key = {item.id} {...item} />)}
           <NewColumn open = {openForm} toggleModal = {toggleModal}/>
           </Box>

@@ -17,15 +17,15 @@ const TaskCard = ({name,description,id}) => {
             
             <TaskForm submit = {editTask}  open = {open} title = "Edit" toggleModal = {toggleModal} name = {name}  id ={id} description ={description} />
            
-                  <Card className ="clickable" onClick = {toggleModal} >
+                  <Card variant="outlined" className ="clickable" onClick = {toggleModal} >
        
                 <CardContent  >
             <Box  display = 'flex'>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="body1" style = {{fontWeight:"600"}} >
                 {name}
               </Typography>
             </Box>
-            <Typography variant="body2" component="p">
+            <Typography gutterBottom variant="body2" >
             
               {description}
             </Typography>

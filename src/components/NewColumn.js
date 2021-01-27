@@ -1,4 +1,4 @@
-import { Box, Button } from '@material-ui/core'
+import { Box, Button,Card,CardContent } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
 import React,{useState} from 'react'
 import ColumnForm from './ColumnForm'
@@ -11,11 +11,14 @@ const NewColumn = ({open,toggleModal}) => {
         close()
     }
     return (
-        <Box width = "280px" marginRight= ".5em" marginTop = ".3em"> 
+        <Box width = "280px" marginRight= ".5em" > 
         <ColumnForm  open = {open} toggleModal = {toggleModal} name = "" title = "Add" submit = {addColumn} />
 
-        <Button onClick = {toggleModal} startIcon = {<Add />}> Add Section </Button>
-
+<Card >
+    <CardContent>
+    <Button style = {{marginTop:".4em"}} onClick = {toggleModal} startIcon = {<Add />}> Add Section </Button>
+    </CardContent>
+</Card>
         </Box>
     )
 }
