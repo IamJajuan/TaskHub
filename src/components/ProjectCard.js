@@ -6,10 +6,10 @@ import PropTypes from 'prop-types'
 import ProjectForm from './ProjectForm';
 import DeleteConfirm from './DeleteConfirm';
 import { Link } from 'react-router-dom';
-import {deleteProject} from '../actions/projects/ProjectActions'
+import {deleteProject,updateProject} from '../actions/projects/ProjectActions'
 import { connect } from 'react-redux';
 
-const ProjectCard = ({id,name,description,deleteProject}) => {
+const ProjectCard = ({id,name,description,deleteProject,updateProject}) => {
 
     const classes = ProjectCardStyles()
     const [openForm, setOpenForm] = useState(false)
@@ -21,17 +21,12 @@ const ProjectCard = ({id,name,description,deleteProject}) => {
       deleteProject(id,toggleAlert)
     } 
 
-    const editProject = (vals,close) => {
-      console.log(vals)
-      close()
-    }
-
     return (
             <Grid item key = {id} xs={12} sm={6} md={4}>
 
               <DeleteConfirm handleDelete = {handleDelete} item = {"Project"} open = {openAlert} toggleAlert = {toggleAlert}/>
               
-                <ProjectForm open = {openForm} submit = {editProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} description = {description}  name = {name}/>
+                <ProjectForm open = {openForm} submit = {updateProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} description = {description}  name = {name}/>
 
                     <Card className={classes.projectCard}>
               
@@ -63,7 +58,8 @@ View
     )
 }
 const mapDispatchToProps = {
-  deleteProject
+  deleteProject,
+  updateProject,
 }
 ProjectCard.propTypes = {
 
@@ -71,5 +67,6 @@ ProjectCard.propTypes = {
   description:PropTypes.string.isRequired,
   name:PropTypes.string.isRequired,
   deleteProject:PropTypes.func.isRequired,
+  updateProject:PropTypes.func.isRequired
 }
 export default connect(null,mapDispatchToProps)(ProjectCard)
