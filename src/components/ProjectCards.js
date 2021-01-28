@@ -12,7 +12,7 @@ const ProjectCards = ({projects}) => {
         <div>
             <Grid container spacing = {2}>
 
-            {projects.map(item => <ProjectCard {...item} />)}
+            {projects.map(item => <ProjectCard key = {item.id} {...item} />)}
 
             </Grid>
         </div>
