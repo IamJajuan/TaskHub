@@ -26,10 +26,7 @@ function App() {
           <PrivateRoute isAuth = {true} exact path = "/" >
             <Home />
           </PrivateRoute>
-          <PrivateRoute isAuth = {true}  path = "/project/:id" >
-            <Project />
-          </PrivateRoute>
-
+          <Route path = "/project/:id" component = {Project}  />
           <Route path = "/login" component = {Login} />
           <Route path = "/signup" component = {SignUp} />
           </Switch>

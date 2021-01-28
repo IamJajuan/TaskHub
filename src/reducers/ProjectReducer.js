@@ -1,7 +1,8 @@
-import { ADDPROJECT, DELETEPROJECT, UPDATEPROJECT } from "../actions/projects/ProjectTypes"
+import { ADDPROJECT, DELETEPROJECT, GETPROJECT, UPDATEPROJECT } from "../actions/projects/ProjectTypes"
 
 const intialState = {
-    projects:[]
+    projects:[],
+    project:{}
 }
 
 export const projectReducer = (state = intialState,{type,payload}) => {
@@ -20,6 +21,10 @@ export const projectReducer = (state = intialState,{type,payload}) => {
         case DELETEPROJECT:
 
          return {...state,projects:state.projects.filter(item => item.id !== payload)}
+
+         case GETPROJECT:
+
+         return {...state,project:state.projects.filter(item => item.id !== payload )[0]}
     
         default:
             return state
