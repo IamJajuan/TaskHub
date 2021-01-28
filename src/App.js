@@ -8,12 +8,15 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp'
 import Project from './pages/Project'
 import { GlobalStyles } from './styles/Global';
+import { Provider } from 'react-redux';
+import { store } from './Store';
 
 
 function App() {
   const  classes = GlobalStyles()
   return (
-    <div className="app-container">
+   <Provider store = {store}>
+ <div className="app-container">
       <Router>
         <Header isAuth = {true} />
         <div className = {classes.toolbar} />
@@ -34,6 +37,7 @@ function App() {
         </div>
       </Router>
     </div>
+   </Provider>
   );
 }
 
