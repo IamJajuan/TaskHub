@@ -1,4 +1,4 @@
-import {ADDPROJECT, DELETEPROJECT, UPDATEPROJECT} from './ProjectTypes'
+import {ADDPROJECT, DELETEPROJECT, GETPROJECT, UPDATEPROJECT} from './ProjectTypes'
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -27,7 +27,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 /**
  * Update the project with the given data
- * When the update is successful, it goes back to the home page with the given function
+ * When the update is successful, it goes back to the project detail page with the given function
  * @param data The given data
  * @param func The given function
  */
@@ -38,3 +38,15 @@ import { v4 as uuidv4 } from 'uuid';
       func(`project/${data.id}`)
 
  }
+
+ /**
+  * Get the project with the given id
+  * @param {String} id the given id
+  */
+
+  export const getProject = (id) => dispatch => {
+
+
+   dispatch({type:GETPROJECT,payload:id})
+
+  }

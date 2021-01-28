@@ -1,21 +1,15 @@
 import { Box,Typography } from '@material-ui/core'
 import React,{useState} from 'react'
+import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Column from '../components/Column'
 import NewColumn from '../components/NewColumn'
+import selectProject from '../selectors/projectSelectors'
+import PropTypes from 'prop-types'
 
+const Project = ({project,match}) => {
 
-const Project = () => {
-
-    const {id} = useParams()
-    const project = {
-        id,name:"Project",sections:[{id:"1" , name:"Doing", tasks:[{name:"Do this" ,description:"Lighting Style",id:"1"},{name:"Backlog",id:"2"}]}, 
-        {name:"Planned" ,description:"Lighting Style",id:"2"},
-        {name:"Complete" ,description:"Fire Style", id:"3"},
-        {name:"Testing" ,description:"Earth Style", id:"4"},
-
-    ] 
-    }
+    
     const {sections,name} = project
     const [openForm, setOpenForm] = useState(false)
     const toggleModal = () => setOpenForm(prev => !prev)
@@ -31,7 +25,7 @@ const Project = () => {
          
         <Box >
         <Box marginTop = "1em" display ="flex" width = "fit-content" >
-          {sections.slice(0,3) .map(item => <Column  key = {item.id} {...item} />)}
+          {sections && sections.slice(0,3) .map(item => <Column  key = {item.id} {...item} />)}
           <NewColumn open = {openForm} toggleModal = {toggleModal}/>
           </Box>
  
@@ -39,5 +33,11 @@ const Project = () => {
        </Box>
     )
 }
+const mapStateToProps = (state,ownProps) => ({
 
-export default Project
+  project:selectProject(state,ownProps),
+})
+Project.prototype = {
+  project:PropTypes.object.isRequired,
+}
+export default connect(mapStateToProps,) (Project)
