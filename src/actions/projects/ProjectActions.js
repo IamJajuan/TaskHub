@@ -11,5 +11,6 @@ import { v4 as uuidv4 } from 'uuid';
 
     proj['id'] = uuidv4()
     dispatch({ type:ADDPROJECT,payload:proj})
-    func()
+    func(`project/${proj.id}`)
  } 
+

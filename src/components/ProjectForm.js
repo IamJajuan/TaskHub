@@ -2,12 +2,15 @@ import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } f
 import React,{useState} from 'react'
 import PropTypes from 'prop-types'
 import {FormStyles} from '../styles/Form'
+import { useHistory } from 'react-router-dom'
 
 const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
     
     const classes = FormStyles()
-    
+    const history = useHistory()
     const [values, setValues] = useState({name , description})
+
+
 
     const handleChange = (event) => {
 
@@ -17,11 +20,12 @@ const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
         setValues(prevState => ({...prevState,[name]:value}))
 
     }
-  
+    
+    
     const handleSubmit = (event) => {
        
         event.preventDefault()
-       submit({id,...values},toggleModal) 
+       submit({id,...values},history.push) 
        setValues({name:"",description:""})
     }
     return (
