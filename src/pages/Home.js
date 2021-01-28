@@ -4,26 +4,23 @@ import ProjectsHeader from '../components/ProjectsHeader'
 import ProjectCards from '../components/ProjectCards'
 import Pagination from '@material-ui/lab/Pagination';
 import ProjectForm from '../components/ProjectForm';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import {addProject} from '../actions/projects/ProjectActions'
 
-const Home = () => {
+const Home = ({projects,addProject}) => {
 
-    let projects = [{name:"Hello",description:'Description',id:'1'},{name:"Hello",description:'Description',id:'2'},{name:"Hello",description:'Description',id:'3'},{name:"Hello",description:'Description',id:'4'},{name:"Hello",description:'Description',id:'5'},{name:"Hello",description:'Description',id:'6'},{name:"Hello",description:'Description',id:'7'},{name:"Hello",description:'Description',id:'8'},{name:"Hello",description:'Description',id:'9'},{name:"Hello",description:'Description',id:'10'},{name:"Hello",description:'Description',id:'11'},{name:"Hello",description:'Description',id:'12'}]
 
     const [open, setOpen] = useState(false)
     const toggleModal = () => setOpen(prev => !prev)
 
     
-    const addProject = (vals,close) => {
-
-        console.log(vals)
-        close()
-
-    }
+    
 
     return (
         <Container component = "main" maxWidth="md">
                 <div>
-                <ProjectForm open = {open} submit = {addProject} name = {""} description = {""} toggleModal = {toggleModal} title = {"Add"} />
+                <ProjectForm id = "" open = {open} submit = {addProject} name = {""} description = {""} toggleModal = {toggleModal} title = {"Add"} />
 
                     </div>
 <div>
@@ -36,5 +33,15 @@ const Home = () => {
         </Container>
     )
 }
+const mapDispatchToProps = {
+    addProject
+}
+const mapStateToProps = (state) => ({
 
-export default Home
+    projects:state.projects.projects,
+  })
+Home.prototype = {
+    projects:PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    addProject:PropTypes.func.isRequired
+}
+export default connect(mapStateToProps,mapDispatchToProps) (Home)
