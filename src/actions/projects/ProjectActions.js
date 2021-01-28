@@ -1,8 +1,8 @@
-import {ADDPROJECT} from './ProjectTypes'
+import {ADDPROJECT, DELETEPROJECT} from './ProjectTypes'
 import { v4 as uuidv4 } from 'uuid';
 
 /**
- * Add the given project to the reducer, then navigate to the project detail page when successful with the given function
+ * Add the given project to the reducer, then navigate to the project detail page when added successfully with the given function
  * @param proj The given project
  * @param func The give function
  * 
@@ -13,4 +13,15 @@ import { v4 as uuidv4 } from 'uuid';
     dispatch({ type:ADDPROJECT,payload:proj})
     func(`project/${proj.id}`)
  } 
+
+ /**
+  * Delete the project with the given id, close modal when deleted successfully with the given function
+  * @param {String} id The given id
+  * @param  func  The given function
+  */
+ export const deleteProject = (id,func) => dispatch => {
+
+    dispatch({type:DELETEPROJECT,payload:id})
+    func()
+ }
 

@@ -1,1 +1,2 @@
 export const ADDPROJECT = "ADDPROJECT"
+export const DELETEPROJECT = "DELETEPROJECT"

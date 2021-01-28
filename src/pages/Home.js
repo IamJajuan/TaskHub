@@ -42,6 +42,6 @@ const mapStateToProps = (state) => ({
   })
 Home.prototype = {
     projects:PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    addProject:PropTypes.func.isRequired
+    addProject:PropTypes.func.isRequired,
 }
 export default connect(mapStateToProps,mapDispatchToProps) (Home)
