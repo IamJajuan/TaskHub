@@ -1,7 +1,6 @@
 import { Box,Typography } from '@material-ui/core'
 import React,{useState} from 'react'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router-dom'
 import Column from '../components/Column'
 import NewColumn from '../components/NewColumn'
 import selectProject from '../selectors/projectSelectors'
