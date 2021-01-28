@@ -29,7 +29,7 @@ const selectProject =  createSelector(
 
         [getProjects,getID], (projects,id) => {
 
-            return projects.find(item => item.id === id)
+            return projects.find(item => item.id === id) || {name:"",sections:[]}
         }
     )
 
