@@ -4,7 +4,7 @@ import { Box, IconButton, Typography } from '@material-ui/core'
 import { Delete, Edit } from '@material-ui/icons'
 import DeleteConfirm from './DeleteConfirm'
 import ColumnForm from './ColumnForm'
-const ColumnHeader = ({name}) => {
+const ColumnHeader = ({name,projectID}) => {
 
 
     const [openAlert, setOpenAlert] = useState(false)
@@ -26,7 +26,7 @@ const ColumnHeader = ({name}) => {
         <Box     display="flex"
         alignItems="center"
         justifyContent="space-between">
-            <ColumnForm  open = {openForm} toggleModal = {toggleModal} name = {name} title = "Edit" submit = {editColumn} />
+            <ColumnForm projectID = {projectID} open = {openForm} toggleModal = {toggleModal} name = {name} title = "Edit" submit = {editColumn} />
             <DeleteConfirm open = {openAlert} handleDelete = {handleDelete} toggleAlert = {toggleAlert} item = {"Column"}  />
 <Typography style = {{overflow:'hidden',textOverflow:"ellipsis"}} variant ="h6"> {name}  </Typography>
 
@@ -47,6 +47,7 @@ ColumnHeader.propTypes = {
 
     name:PropTypes.string.isRequired,
     id:PropTypes.string.isRequired,
+    projectID:PropTypes.string.isRequired,
 }
 
 export default ColumnHeader

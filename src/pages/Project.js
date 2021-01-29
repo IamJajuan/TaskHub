@@ -3,15 +3,17 @@ import React,{useState} from 'react'
 import { connect } from 'react-redux'
 import Column from '../components/Column'
 import NewColumn from '../components/NewColumn'
-import selectProject from '../selectors/projectSelectors'
+import {selectProject,selectProjectColumns} from '../selectors/projectSelectors'
 import PropTypes from 'prop-types'
 
-const Project = ({project,match}) => {
+const Project = ({project,match,columns}) => {
 
     
     const {sections,name} = project
     const [openForm, setOpenForm] = useState(false)
     const toggleModal = () => setOpenForm(prev => !prev)
+    const {params} = match
+    const {id} = params
 
     return (
        <Box  >
@@ -21,10 +23,10 @@ const Project = ({project,match}) => {
            </Typography>
           </Box>
 
-         
+       
         <Box >
         <Box marginTop = "1em" display ="flex" width = "fit-content" >
-          {sections && sections.slice(0,3) .map(item => <Column  key = {item.id} {...item} />)}
+          {columns && columns.slice(0,3) .map(item => <Column projectID = {id} key = {item.id} {...item} />)}
           <NewColumn open = {openForm} toggleModal = {toggleModal}/>
           </Box>
  
@@ -35,8 +37,11 @@ const Project = ({project,match}) => {
 const mapStateToProps = (state,ownProps) => ({
 
   project:selectProject(state,ownProps),
+  columns:selectProjectColumns(state,ownProps)
+
 })
 Project.prototype = {
   project:PropTypes.object.isRequired,
+  columns:PropTypes.arrayOf(PropTypes.object),
 }
 export default connect(mapStateToProps,) (Project)

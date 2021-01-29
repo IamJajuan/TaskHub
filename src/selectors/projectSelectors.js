@@ -17,7 +17,7 @@ const getProjects = (state) => {
  * @return The id of the given object
  * It does not use the given state
  */
-const getID = (state,obj) => {
+const getProjectID = (state,obj) => {
      
     const {match} = obj
     const {params} = match
@@ -25,14 +25,24 @@ const getID = (state,obj) => {
     return id
 }
 
-const selectProject =  createSelector(
+/**
+ * 
+ * @param state The given state
+ * @returns An array of columns with the given state
+ */
+const getColumns = (state) => state.columns.columns
+export const selectProjectColumns = createSelector(
+    [getColumns,getProjectID],(cols,id) => cols.filter(col => col.projectID === id )
+)
+export const selectProject =  createSelector(
 
-        [getProjects,getID], (projects,id) => {
+        [getProjects,getProjectID], (projects,id) => {
 
+            console.log(id)
             return projects.find(item => item.id === id) || {name:"",sections:[]}
         }
     )
 
 
-export default selectProject
+
 
