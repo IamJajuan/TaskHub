@@ -2,12 +2,13 @@ import React,{useState} from 'react'
 import PropTypes from 'prop-types'
 import {  Card, Typography,CardContent,Box} from '@material-ui/core'
 import TaskForm from './TaskForm'
-
-const TaskCard = ({name,description,id,projectID}) => {
+import {updateTask} from '../actions/tasks/TaskActions'
+import { connect } from 'react-redux'
+const TaskCard = ({name,description,id,projectID,updateTask,columnID}) => {
     
   const [open, setOpen] = useState(false)
 
-  const editTask = ({vals},close) => {
+  const editTask = (vals,close) => {
       console.log(vals)
       close()
   }
@@ -15,7 +16,7 @@ const TaskCard = ({name,description,id,projectID}) => {
     return (
         <Box  marginTop = {"1em"}>
             
-            <TaskForm projectID = {projectID} submit = {editTask}  open = {open} title = "Edit" toggleModal = {toggleModal} name = {name}  id ={id} description ={description} />
+            <TaskForm columnID = {columnID} projectID = {projectID} submit = {updateTask}  open = {open} title = "Edit" toggleModal = {toggleModal} name = {name}  id ={id} description ={description} />
            
                   <Card variant="outlined" className ="clickable" onClick = {toggleModal} >
        
@@ -44,9 +45,15 @@ TaskCard.propTypes = {
     description:PropTypes.string,
     id:PropTypes.string.isRequired,
     projectID:PropTypes.string.isRequired,
+    updateTask:PropTypes.func.isRequired,
+    columnID:PropTypes.string.isRequired,
     
 
 
 }
 
-export default TaskCard
+const mapDispatchToProps = {
+    
+  updateTask,
+}
+export default connect(null,mapDispatchToProps)(TaskCard)

@@ -1,4 +1,4 @@
-import { ADDTASK, REMOVETASKS } from "../actions/tasks/TaskTypes";
+import { ADDTASK, REMOVETASKS, UPDATETASK } from "../actions/tasks/TaskTypes";
 
 const initialState = {tasks:[]}
 
@@ -9,6 +9,10 @@ switch (type) {
     case ADDTASK:
         
         return {...state,tasks:[...state.tasks,payload]};
+
+    case UPDATETASK:
+
+    return {...state,tasks:state.tasks.map(task => task.id === payload.id ? payload : task)}
     
     case REMOVETASKS:
 

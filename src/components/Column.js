@@ -23,7 +23,7 @@ const Column = ({name,id,tasks,projectID,addTask}) => {
             <Button style = {{marginBottom:'1em',marginTop:'1em'}} onClick = {toggleTaskModal} variant = "outlined" size = "small" fullWidth startIcon = {<Add/>}> Add Task </Button>
            
                 <Box>
-                {(tasks && tasks.map(item => (<TaskCard projectID = {projectID} key = {item.id} {...item} />)  ))}
+                {(tasks && tasks.map(item => (<TaskCard columnID = {id} projectID = {projectID} key = {item.id} {...item} />)  ))}
                 </Box>
 
 </CardContent>
