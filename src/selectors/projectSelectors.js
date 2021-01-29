@@ -31,14 +31,35 @@ const getProjectID = (state,obj) => {
  * @returns An array of columns with the given state
  */
 const getColumns = (state) => state.columns.columns
+
 export const selectProjectColumns = createSelector(
     [getColumns,getProjectID],(cols,id) => cols.filter(col => col.projectID === id )
 )
+
+/**
+ * 
+ * @param state the given state
+ * @param props the given props
+ * @returns the id from the given props
+ * It does not use the given state 
+ */
+export const getColumnID = (state,props) => {
+
+    const {id} = props
+
+    return id
+}
+
+const getTasks = state => state.tasks.tasks
+export const selectTasks = createSelector(
+
+    [getColumnID,getTasks],(id,tasks) => (tasks.filter(task => task.columnID === id ))
+)
+
 export const selectProject =  createSelector(
 
         [getProjects,getProjectID], (projects,id) => {
 
-            console.log(id)
             return projects.find(item => item.id === id) || {name:"",sections:[]}
         }
     )
