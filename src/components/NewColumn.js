@@ -1,15 +1,15 @@
 import { Box, Button,Card,CardContent } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
-import React,{useState} from 'react'
+import React from 'react'
 import ColumnForm from './ColumnForm'
+import PropTypes from 'prop-types'
+import {addColumn} from '../actions/columns/ColumnActions'
+import { connect } from 'react-redux'
 
-const NewColumn = ({open,toggleModal}) => {
 
-    const addColumn = (val,close) => {
+const NewColumn = ({open,toggleModal,addColumn}) => {
 
-        console.log(val)
-        close()
-    }
+   
     return (
         <Box width = "280px" marginRight= ".5em" > 
         <ColumnForm  open = {open} toggleModal = {toggleModal} name = "" title = "Add" submit = {addColumn} />
@@ -23,4 +23,12 @@ const NewColumn = ({open,toggleModal}) => {
     )
 }
 
-export default NewColumn
+const mapDispatchToProps = {
+    
+    addColumn,
+  }
+NewColumn.propTypes = {
+
+    addColumn:PropTypes.func.isRequired
+}
+export default connect(null,mapDispatchToProps)(NewColumn)

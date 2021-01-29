@@ -2,11 +2,12 @@ import React,{useState} from 'react'
 import PropTypes from 'prop-types'
 import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
 import { FormStyles } from '../styles/Form'
+import { useParams } from 'react-router-dom'
 
 const ColumnForm = ({open,toggleModal,name,title,submit,id}) => {
 
     const [values, setValues] = useState({name})
-
+    const projectID = useParams().id
     const handleChange = (event) => {
 
         const {target} = event
@@ -18,7 +19,8 @@ const ColumnForm = ({open,toggleModal,name,title,submit,id}) => {
     const handleSubmit = (event) => {
        
        event.preventDefault()
-       submit({id,...values},toggleModal) 
+       //const projID = 
+       submit({id,...values,projectID},toggleModal) 
        setValues({name:""})
     }
 
@@ -43,6 +45,7 @@ const ColumnForm = ({open,toggleModal,name,title,submit,id}) => {
     )
 }
 
+
 ColumnForm.propTypes = {
 
     open:PropTypes.bool.isRequired,
@@ -50,7 +53,8 @@ ColumnForm.propTypes = {
     name:PropTypes.string.isRequired,
     id:PropTypes.string,
     title:PropTypes.string.isRequired,
-    submit:PropTypes.func.isRequired
+    submit:PropTypes.func.isRequired,
+    projectID:PropTypes.string.isRequired,
 }
 
 export default ColumnForm
