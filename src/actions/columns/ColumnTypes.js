@@ -1,1 +1,2 @@
 export const ADDCOLUMN = "ADDCOLUMN";
+export const REMOVECOLUMNS = "REMOVECOLUMS"

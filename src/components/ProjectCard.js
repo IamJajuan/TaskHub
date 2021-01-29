@@ -8,17 +8,21 @@ import DeleteConfirm from './DeleteConfirm';
 import { Link } from 'react-router-dom';
 import {deleteProject,updateProject} from '../actions/projects/ProjectActions'
 import { connect } from 'react-redux';
+import {removeColumns} from '../actions/columns/ColumnActions'
 
-const ProjectCard = ({id,name,description,deleteProject,updateProject}) => {
+const ProjectCard = ({id,name,description,deleteProject,updateProject,removeColumns}) => {
 
     const classes = ProjectCardStyles()
     const [openForm, setOpenForm] = useState(false)
     const [openAlert, setOpenAlert] = useState(false)
     const toggleModal = () => setOpenForm(prev => !prev)
     const toggleAlert = () => setOpenAlert(prev => !prev)
+    const closeAlert = () => setOpenAlert(false)
     const handleDelete = () => {
 
-      deleteProject(id,toggleAlert)
+      removeColumns(id,'projectID',closeAlert)
+      deleteProject(id,closeAlert)
+      
     } 
 
     return (
@@ -60,6 +64,8 @@ View
 const mapDispatchToProps = {
   deleteProject,
   updateProject,
+  removeColumns,
+
 }
 ProjectCard.propTypes = {
 
@@ -67,6 +73,7 @@ ProjectCard.propTypes = {
   description:PropTypes.string.isRequired,
   name:PropTypes.string.isRequired,
   deleteProject:PropTypes.func.isRequired,
-  updateProject:PropTypes.func.isRequired
+  updateProject:PropTypes.func.isRequired,
+  removeColumns:PropTypes.func.isRequired,
 }
 export default connect(null,mapDispatchToProps)(ProjectCard)

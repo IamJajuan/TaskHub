@@ -4,7 +4,10 @@ import { Box, IconButton, Typography } from '@material-ui/core'
 import { Delete, Edit } from '@material-ui/icons'
 import DeleteConfirm from './DeleteConfirm'
 import ColumnForm from './ColumnForm'
-const ColumnHeader = ({name,projectID}) => {
+import {removeColumns} from '../actions/columns/ColumnActions'
+import { connect } from 'react-redux'
+
+const ColumnHeader = ({name,projectID,removeColumns,id}) => {
 
 
     const [openAlert, setOpenAlert] = useState(false)
@@ -18,7 +21,7 @@ const ColumnHeader = ({name,projectID}) => {
     }
     const handleDelete = () => {
 
-        toggleAlert()
+        removeColumns(id,'id',toggleAlert)
       } 
   
 
@@ -42,12 +45,16 @@ const ColumnHeader = ({name,projectID}) => {
         </Box>
     )
 }
+const mapDispatchToProps = {
 
+    removeColumns,
+}
 ColumnHeader.propTypes = {
 
     name:PropTypes.string.isRequired,
     id:PropTypes.string.isRequired,
     projectID:PropTypes.string.isRequired,
+    removeColumns:PropTypes.func.isRequired,
 }
 
-export default ColumnHeader
+export default connect(null,mapDispatchToProps)(ColumnHeader)
