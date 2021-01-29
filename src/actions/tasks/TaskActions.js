@@ -1,4 +1,4 @@
-import { ADDTASK,REMOVETASKS } from "./TaskTypes"
+import { ADDTASK,REMOVETASKS, UPDATETASK } from "./TaskTypes"
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -24,3 +24,16 @@ export const removeTasks = (id,field,func) => dispatch => {
     dispatch({type:REMOVETASKS,payload:{id,field}})
     func()
 }
+
+
+/**
+ * Update task from reducer with the given data, then close modal when updated successfully with the given function
+ * @param data the given data
+ * @param func the given function
+ */
+ 
+ export const updateTask = (data,func) => dispatch => {
+
+    dispatch({type:UPDATETASK,payload:data})
+    func()
+ }
