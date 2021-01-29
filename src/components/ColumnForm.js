@@ -19,7 +19,6 @@ const ColumnForm = ({open,toggleModal,name,title,submit,id}) => {
     const handleSubmit = (event) => {
        
        event.preventDefault()
-       //const projID = 
        submit({id,...values,projectID},toggleModal) 
        setValues({name:""})
     }
