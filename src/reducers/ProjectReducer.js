@@ -2,7 +2,6 @@ import { ADDPROJECT, DELETEPROJECT, GETPROJECT, UPDATEPROJECT } from "../actions
 
 const intialState = {
     projects:[],
-    project:{}
 }
 
 export const projectReducer = (state = intialState,{type,payload}) => {
@@ -22,9 +21,7 @@ export const projectReducer = (state = intialState,{type,payload}) => {
 
          return {...state,projects:state.projects.filter(item => item.id !== payload)}
 
-         case GETPROJECT:
-
-         return {...state,project:state.projects.filter(item => item.id !== payload )[0]}
+ 
     
         default:
             return state

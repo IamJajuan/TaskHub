@@ -1,4 +1,4 @@
-import {ADDPROJECT, DELETEPROJECT, GETPROJECT, UPDATEPROJECT} from './ProjectTypes'
+import {ADDPROJECT, DELETEPROJECT, UPDATEPROJECT} from './ProjectTypes'
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -38,15 +38,3 @@ import { v4 as uuidv4 } from 'uuid';
       func(`project/${data.id}`)
 
  }
-
- /**
-  * Get the project with the given id
-  * @param {String} id the given id
-  */
-
-  export const getProject = (id) => dispatch => {
-
-
-   dispatch({type:GETPROJECT,payload:id})
-
-  }
