@@ -1,4 +1,4 @@
-import { ADDPROJECT, DELETEPROJECT, GETPROJECT, UPDATEPROJECT } from "../actions/projects/ProjectTypes"
+import { ADDPROJECT, DELETEPROJECT,  UPDATEPROJECT } from "../actions/projects/ProjectTypes"
 
 const intialState = {
     projects:[],
