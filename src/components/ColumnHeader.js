@@ -7,7 +7,9 @@ import ColumnForm from './ColumnForm'
 import {removeColumns} from '../actions/columns/ColumnActions'
 import { connect } from 'react-redux'
 import {updateColumn} from '../actions/columns/ColumnActions'
-const ColumnHeader = ({name,projectID,removeColumns,id,updateColumn}) => {
+import {removeTasks} from '../actions/tasks/TaskActions'
+
+const ColumnHeader = ({name,projectID,removeColumns,id,updateColumn,removeTasks}) => {
 
 
     const [openAlert, setOpenAlert] = useState(false)
@@ -18,6 +20,7 @@ const ColumnHeader = ({name,projectID,removeColumns,id,updateColumn}) => {
     const handleDelete = () => {
 
         removeColumns(id,'id',toggleAlert)
+        removeTasks(id,'columnID',toggleAlert)
       } 
   
 
@@ -45,6 +48,7 @@ const mapDispatchToProps = {
 
     removeColumns,
     updateColumn,
+    removeTasks,
 }
 ColumnHeader.propTypes = {
 
@@ -52,7 +56,8 @@ ColumnHeader.propTypes = {
     id:PropTypes.string.isRequired,
     projectID:PropTypes.string.isRequired,
     removeColumns:PropTypes.func.isRequired,
-    updateColumn:PropTypes.func.isRequired
+    updateColumn:PropTypes.func.isRequired,
+    removeTasks:PropTypes.func.isRequired,
 }
 
 export default connect(null,mapDispatchToProps)(ColumnHeader)

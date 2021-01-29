@@ -40,7 +40,7 @@ const mapStateToProps = (state) => ({
 
     projects:state.projects.projects,
   })
-Home.prototype = {
+Home.propTypes = {
     projects:PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     addProject:PropTypes.func.isRequired,
 }

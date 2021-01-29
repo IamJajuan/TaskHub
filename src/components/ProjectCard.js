@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 import {deleteProject,updateProject} from '../actions/projects/ProjectActions'
 import { connect } from 'react-redux';
 import {removeColumns} from '../actions/columns/ColumnActions'
-
-const ProjectCard = ({id,name,description,deleteProject,updateProject,removeColumns}) => {
+import {removeTasks} from '../actions/tasks/TaskActions'
+const ProjectCard = ({id,name,description,deleteProject,updateProject,removeColumns,removeTasks}) => {
 
     const classes = ProjectCardStyles()
     const [openForm, setOpenForm] = useState(false)
@@ -20,6 +20,7 @@ const ProjectCard = ({id,name,description,deleteProject,updateProject,removeColu
     const closeAlert = () => setOpenAlert(false)
     const handleDelete = () => {
 
+      removeTasks(id,'projectID',closeAlert)
       removeColumns(id,'projectID',closeAlert)
       deleteProject(id,closeAlert)
       
@@ -65,6 +66,7 @@ const mapDispatchToProps = {
   deleteProject,
   updateProject,
   removeColumns,
+  removeTasks,
 
 }
 ProjectCard.propTypes = {
@@ -75,5 +77,6 @@ ProjectCard.propTypes = {
   deleteProject:PropTypes.func.isRequired,
   updateProject:PropTypes.func.isRequired,
   removeColumns:PropTypes.func.isRequired,
+  removeTasks:PropTypes.func.isRequired,
 }
 export default connect(null,mapDispatchToProps)(ProjectCard)

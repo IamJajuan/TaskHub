@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {  Card, Typography,CardContent,Box} from '@material-ui/core'
 import TaskForm from './TaskForm'
 
-const TaskCard = ({name,description,id}) => {
+const TaskCard = ({name,description,id,projectID}) => {
     
   const [open, setOpen] = useState(false)
 
@@ -15,7 +15,7 @@ const TaskCard = ({name,description,id}) => {
     return (
         <Box  marginTop = {"1em"}>
             
-            <TaskForm submit = {editTask}  open = {open} title = "Edit" toggleModal = {toggleModal} name = {name}  id ={id} description ={description} />
+            <TaskForm projectID = {projectID} submit = {editTask}  open = {open} title = "Edit" toggleModal = {toggleModal} name = {name}  id ={id} description ={description} />
            
                   <Card variant="outlined" className ="clickable" onClick = {toggleModal} >
        
@@ -43,6 +43,8 @@ TaskCard.propTypes = {
     name:PropTypes.string.isRequired,
     description:PropTypes.string,
     id:PropTypes.string.isRequired,
+    projectID:PropTypes.string.isRequired,
+    
 
 
 }

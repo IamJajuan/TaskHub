@@ -2,8 +2,10 @@ import React,{useState} from 'react'
 import PropTypes from 'prop-types'
 import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
 import { FormStyles } from '../styles/Form'
+import {removeTasks} from '../actions/tasks/TaskActions'
+import { connect } from 'react-redux'
 
-const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID}) => {
+const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID,removeTasks,projectID}) => {
 
     const [values, setValues] = useState({name,description})
 
@@ -20,10 +22,16 @@ const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID}) 
     const handleSubmit = (event) => {
        
        event.preventDefault()
-       submit({id,...values,columnID},toggleModal) 
-       id && setValues({name:"",description:"",cost:"",stage:"",priority:""})
+       console.log(projectID)
+       submit({id,...values,columnID,projectID},toggleModal) 
+       setValues({name:"",description:"",cost:"",stage:"",priority:""})
     }
 
+    const handleDelete = () => {
+
+
+        removeTasks(id,'id',toggleModal)
+    }
     const classes = FormStyles()
     return (
         <Dialog fullWidth open = {open} onClose = {toggleModal} >
@@ -39,7 +47,7 @@ const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID}) 
         <Button onClick = {toggleModal}  type = "button" color = "primary" > {`Cancel`} </Button >
         <Button  type = "submit" color = "primary" > {`${title} Task`} </Button >
         
-        {title === "Edit" && <Button onClick = {toggleModal}  type = "button" color = "primary" >Delete Task</Button>}
+        {title === "Edit" && <Button onClick = {handleDelete}  type = "button" color = "primary" >Delete Task</Button>}
 
         </DialogActions>
         </form>
@@ -60,7 +68,13 @@ TaskForm.propTypes = {
     id:PropTypes.string,
     columnID:PropTypes.string,
     title:PropTypes.string.isRequired,
-    submit:PropTypes.func.isRequired
+    submit:PropTypes.func.isRequired,
+    removeTasks:PropTypes.func,
+    projectID:PropTypes.string,
 }
 
-export default TaskForm
+const mapDispatchToProps = {
+
+    removeTasks,
+}
+export default connect(null,mapDispatchToProps) (TaskForm)
