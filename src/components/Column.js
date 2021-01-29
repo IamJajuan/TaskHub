@@ -18,12 +18,12 @@ const Column = ({name,id,tasks,projectID,addTask}) => {
         <Box width = "280px"  marginRight= ".5em" >
            <Card>
 <CardContent>
-<TaskForm columnID = {id}  name = "" id = "" submit = {addTask} toggleModal = {toggleTaskModal} open={openTask} description = "" cost = "" title ="Add" stage = "" priority = ""   />
+<TaskForm projectID = {projectID} columnID = {id}  name = "" id = "" submit = {addTask} toggleModal = {toggleTaskModal} open={openTask} description = "" cost = "" title ="Add" stage = "" priority = ""   />
             <ColumnHeader projectID = {projectID} id = {id} name = {name} />
             <Button style = {{marginBottom:'1em',marginTop:'1em'}} onClick = {toggleTaskModal} variant = "outlined" size = "small" fullWidth startIcon = {<Add/>}> Add Task </Button>
            
                 <Box>
-                {(tasks && tasks.map(item => (<TaskCard key = {item.id} {...item} />)  ))}
+                {(tasks && tasks.map(item => (<TaskCard projectID = {projectID} key = {item.id} {...item} />)  ))}
                 </Box>
 
 </CardContent>

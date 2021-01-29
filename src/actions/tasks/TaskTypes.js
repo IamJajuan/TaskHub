@@ -1,3 +1,3 @@
 export const ADDTASK = "ADDTASK"
 export const UPDATETASK = "UPDATETASK"
-export const DELETETASK = "DELETETASK"
+export const REMOVETASKS = "REMOVETASKS"

@@ -14,7 +14,7 @@ export const addColumn = (col,func) => dispatch => {
 }
 
 /**
- *Remove the given columns from reducer with the given field with the given id, then close modal when removed successfully with the given function
+ *Remove the columns from reducer with the given field with the given id, then close modal when removed successfully with the given function
 
  *@param {String} id the given id
  *@param {String} field the given field
