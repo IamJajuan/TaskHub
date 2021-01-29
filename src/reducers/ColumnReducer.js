@@ -1,4 +1,4 @@
-import {ADDCOLUMN, REMOVECOLUMNS} from '../actions/columns/ColumnTypes'
+import {ADDCOLUMN, REMOVECOLUMNS, UPDATECOLUMN} from '../actions/columns/ColumnTypes'
 
 const initalState = {columns:[]}
 
@@ -14,6 +14,10 @@ export const columnReducer = (state = initalState,{type,payload}) => {
 
         const {id,field} = payload
         return {...state,columns:state.columns.filter(item => item[field] !== id )}
+
+        case UPDATECOLUMN:
+
+        return {...state,columns:state.columns.map(item => item.id === payload.id ? payload : item )}
             
             
     

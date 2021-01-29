@@ -6,19 +6,15 @@ import DeleteConfirm from './DeleteConfirm'
 import ColumnForm from './ColumnForm'
 import {removeColumns} from '../actions/columns/ColumnActions'
 import { connect } from 'react-redux'
-
-const ColumnHeader = ({name,projectID,removeColumns,id}) => {
+import {updateColumn} from '../actions/columns/ColumnActions'
+const ColumnHeader = ({name,projectID,removeColumns,id,updateColumn}) => {
 
 
     const [openAlert, setOpenAlert] = useState(false)
     const [openForm, setOpenForm] = useState(false)
     const toggleAlert = () => setOpenAlert(prev => !prev)
     const toggleModal = () => setOpenForm(prev => !prev)
-    const editColumn = (val,close) => {
-
-        console.log(val)
-        close()
-    }
+   
     const handleDelete = () => {
 
         removeColumns(id,'id',toggleAlert)
@@ -29,7 +25,7 @@ const ColumnHeader = ({name,projectID,removeColumns,id}) => {
         <Box     display="flex"
         alignItems="center"
         justifyContent="space-between">
-            <ColumnForm projectID = {projectID} open = {openForm} toggleModal = {toggleModal} name = {name} title = "Edit" submit = {editColumn} />
+            <ColumnForm id = {id} projectID = {projectID} open = {openForm} toggleModal = {toggleModal} name = {name} title = "Edit" submit = {updateColumn} />
             <DeleteConfirm open = {openAlert} handleDelete = {handleDelete} toggleAlert = {toggleAlert} item = {"Column"}  />
 <Typography style = {{overflow:'hidden',textOverflow:"ellipsis"}} variant ="h6"> {name}  </Typography>
 
@@ -48,6 +44,7 @@ const ColumnHeader = ({name,projectID,removeColumns,id}) => {
 const mapDispatchToProps = {
 
     removeColumns,
+    updateColumn,
 }
 ColumnHeader.propTypes = {
 
@@ -55,6 +52,7 @@ ColumnHeader.propTypes = {
     id:PropTypes.string.isRequired,
     projectID:PropTypes.string.isRequired,
     removeColumns:PropTypes.func.isRequired,
+    updateColumn:PropTypes.func.isRequired
 }
 
 export default connect(null,mapDispatchToProps)(ColumnHeader)
