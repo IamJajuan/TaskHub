@@ -20,7 +20,7 @@ const ColumnForm = ({open,toggleModal,name,title,submit,id}) => {
        
        event.preventDefault()
        submit({id,...values,projectID},toggleModal) 
-       {!id && setValues({name:""})}
+       !id && setValues({name:""})
     }
 
     const classes = FormStyles()

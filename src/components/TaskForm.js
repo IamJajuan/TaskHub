@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
 import { FormStyles } from '../styles/Form'
 
-const TaskForm = ({open,toggleModal,title,submit,id,name,description}) => {
+const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID}) => {
 
     const [values, setValues] = useState({name,description})
 
@@ -20,8 +20,8 @@ const TaskForm = ({open,toggleModal,title,submit,id,name,description}) => {
     const handleSubmit = (event) => {
        
        event.preventDefault()
-       submit({id,...values},toggleModal) 
-       setValues({name:"",description:"",cost:"",stage:"",priority:""})
+       submit({id,...values,columnID},toggleModal) 
+       id && setValues({name:"",description:"",cost:"",stage:"",priority:""})
     }
 
     const classes = FormStyles()
@@ -58,6 +58,7 @@ TaskForm.propTypes = {
     cost:PropTypes.string,
     stage:PropTypes.string,
     id:PropTypes.string,
+    columnID:PropTypes.string,
     title:PropTypes.string.isRequired,
     submit:PropTypes.func.isRequired
 }
