@@ -4,7 +4,9 @@ import {  Card, Typography,CardContent,Box} from '@material-ui/core'
 import TaskForm from './TaskForm'
 import {updateTask} from '../actions/tasks/TaskActions'
 import { connect } from 'react-redux'
-const TaskCard = ({name,description,id,projectID,updateTask,columnID}) => {
+import {  Draggable } from "react-beautiful-dnd";
+
+const TaskCard = ({name,description,id,projectID,updateTask,columnID,index}) => {
     
   const [open, setOpen] = useState(false)
 
@@ -14,7 +16,10 @@ const TaskCard = ({name,description,id,projectID,updateTask,columnID}) => {
   }
     const toggleModal = () => setOpen(prev => !prev)
     return (
-        <Box  marginTop = {"1em"}>
+        
+      <Draggable index = {index} key ={id} draggableId = {id}>
+        {(provided) => (<Box ref ={provided.innerRef}     {...provided.draggableProps}
+          {...provided.dragHandleProps} marginTop = {"1em"}>
             
             <TaskForm columnID = {columnID} projectID = {projectID} submit = {updateTask}  open = {open} title = "Edit" toggleModal = {toggleModal} name = {name}  id ={id} description ={description} />
            
@@ -36,6 +41,8 @@ const TaskCard = ({name,description,id,projectID,updateTask,columnID}) => {
                 </Card>           
                         
         </Box>
+        )}
+      </Draggable>
     )
 }
 

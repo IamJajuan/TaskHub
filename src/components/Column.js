@@ -8,29 +8,35 @@ import TaskForm from './TaskForm'
 import {addTask} from '../actions/tasks/TaskActions'
 import { connect } from 'react-redux'
 import {selectTasks} from '../selectors/projectSelectors'
-const Column = ({name,id,tasks,projectID,addTask}) => {
+import { Droppable } from 'react-beautiful-dnd';
+
+const Column = ({name,id,tasks,projectID,addTask,index}) => {
        
     const [openTask, setOpenTask] = useState(false)
     const toggleTaskModal = () => setOpenTask(prev => !prev)
 
 
     return (
-        <Box width = "280px"  marginRight= ".5em" >
-           <Card>
+    <Droppable droppableId = {id} index = {index} > 
+      {(provided) => (  <Box ref={provided.innerRef} {...provided.droppableProps} width = "280px"  marginRight= ".5em" >
+      <Card>
 <CardContent>
 <TaskForm projectID = {projectID} columnID = {id}  name = "" id = "" submit = {addTask} toggleModal = {toggleTaskModal} open={openTask} description = "" cost = "" title ="Add" stage = "" priority = ""   />
-            <ColumnHeader projectID = {projectID} id = {id} name = {name} />
-            <Button style = {{marginBottom:'1em',marginTop:'1em'}} onClick = {toggleTaskModal} variant = "outlined" size = "small" fullWidth startIcon = {<Add/>}> Add Task </Button>
-           
-                <Box>
-                {(tasks && tasks.map(item => (<TaskCard columnID = {id} projectID = {projectID} key = {item.id} {...item} />)  ))}
-                </Box>
+       <ColumnHeader projectID = {projectID} id = {id} name = {name} />
+       <Button style = {{marginBottom:'1em',marginTop:'1em'}} onClick = {toggleTaskModal} variant = "outlined" size = "small" fullWidth startIcon = {<Add/>}> Add Task </Button>
+      
+           <Box>
+           {(tasks && tasks.map((item,index) => (<TaskCard index = {index} columnID = {id} projectID = {projectID} key = {item.id} {...item} />)  ))}
+           {provided.placeholder}
+
+           </Box>
 
 </CardContent>
-           </Card>
+      </Card>
 
 
-        </Box>
+   </Box>)}
+    </Droppable>
     )
 }
 

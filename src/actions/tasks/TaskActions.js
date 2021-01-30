@@ -1,4 +1,4 @@
-import { ADDTASK,REMOVETASKS, UPDATETASK } from "./TaskTypes"
+import { ADDTASK,REMOVETASKS, REORDERTASKS, UPDATETASK } from "./TaskTypes"
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -36,4 +36,15 @@ export const removeTasks = (id,field,func) => dispatch => {
 
     dispatch({type:UPDATETASK,payload:data})
     func()
+ }
+
+ /**
+  * Reorder task list with the given data
+  * @param data The given data
+  */
+
+ export const reorderTasks  = data => dispatch => {
+
+  
+    dispatch({type:REORDERTASKS,payload:data})
  }
