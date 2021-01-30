@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import {ADDCOLUMN, REMOVECOLUMNS, UPDATECOLUMN} from './ColumnTypes'
+import {ADDCOLUMN, REMOVECOLUMNS, REORDERCOLUMNS, UPDATECOLUMN} from './ColumnTypes'
 
 /**
  * Add the given column object to the reducer, then close modal when added successfully with the given function
@@ -38,6 +38,15 @@ export const removeColumns = (id,field,func) => dispatch => {
 
     dispatch({type:UPDATECOLUMN,payload:data})
     func()
+ }
 
+  /**
+  * Reorder columns with the given data
+  * @param data The given data
+  */
 
+ export const reorderColumns  = data => dispatch => {
+
+  
+    dispatch({type:REORDERCOLUMNS,payload:data})
  }

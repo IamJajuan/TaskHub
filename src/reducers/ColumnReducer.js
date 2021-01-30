@@ -1,4 +1,4 @@
-import {ADDCOLUMN, REMOVECOLUMNS, UPDATECOLUMN} from '../actions/columns/ColumnTypes'
+import {ADDCOLUMN, REMOVECOLUMNS, UPDATECOLUMN,REORDERCOLUMNS} from '../actions/columns/ColumnTypes'
 
 const initalState = {columns:[]}
 
@@ -18,6 +18,18 @@ export const columnReducer = (state = initalState,{type,payload}) => {
         case UPDATECOLUMN:
 
         return {...state,columns:state.columns.map(item => item.id === payload.id ? payload : item )}
+
+        case REORDERCOLUMNS:
+
+   const {draggableId,destination} = payload
+
+
+   let columns = [...state.columns]
+   let column = columns.findIndex(task => task.id === draggableId)
+   column =columns.splice(column,1)[0]
+   columns.splice(destination.index, 0, column)
+
+   return {...state,columns}
             
             
     

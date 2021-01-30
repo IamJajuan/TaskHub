@@ -5,18 +5,34 @@ import Column from '../components/Column'
 import NewColumn from '../components/NewColumn'
 import {selectProject,selectProjectColumns} from '../selectors/projectSelectors'
 import PropTypes from 'prop-types'
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext,Droppable } from 'react-beautiful-dnd';
 import {reorderTasks} from '../actions/tasks/TaskActions'
+import {reorderColumns} from '../actions/columns/ColumnActions'
+import { COLUMN, TASK } from '../CONSTANTS'
 
-const Project = ({project,match,columns,reorderTasks}) => {
+const Project = ({project,match,columns,reorderTasks,reorderColumns}) => {
 
     
-    const {sections,name} = project
+    const {name} = project
     const [openForm, setOpenForm] = useState(false)
     const toggleModal = () => setOpenForm(prev => !prev)
     const {params} = match
     const {id} = params
-    const handleDrag = (val) => console.log(val)
+    /**
+     * Reorder item depending on the given object type
+     * @param obj  The given object
+     */
+    const handleDrag = (obj) => {
+
+      if (obj.destination) {
+        
+        obj.type === TASK ? reorderTasks(obj) : reorderColumns(obj)
+      }
+
+  
+
+    }
+    
 
     return (
        <Box  >
@@ -29,9 +45,20 @@ const Project = ({project,match,columns,reorderTasks}) => {
        
         <Box >
         <Box marginTop = "1em" display ="flex" width = "fit-content" >
-<DragDropContext onDragEnd = {reorderTasks}>
-{columns && columns.slice(0,3) .map((item,index) => <Column index = {index}  projectID = {id} key = {item.id} {...item} />) }
+<DragDropContext onDragEnd = {handleDrag} >
 
+<Droppable droppableId = "all-columns" type = {COLUMN} direction = "horizontal" >
+{ (provided) => (<Box display = "flex" ref={provided.innerRef} {...provided.droppableProps}>  
+
+
+{ 
+  columns && columns.map((item,index) => <Column index = {index}  projectID = {id} key = {item.id} {...item} />)  
+}
+{provided.placeholder}
+
+</Box>) }
+
+</Droppable>
 </DragDropContext>
           <NewColumn open = {openForm} toggleModal = {toggleModal}/>
           </Box>
@@ -50,10 +77,13 @@ const mapStateToProps = (state,ownProps) => ({
 const mapDispatchToProps = {
     
   reorderTasks,
+  reorderColumns,
+
 }
 Project.propTypes = {
   project:PropTypes.object.isRequired,
   columns:PropTypes.arrayOf(PropTypes.object),
   reorderTasks:PropTypes.func.isRequired,
+  reorderColumns:PropTypes.func.isRequired,
 }
 export default connect(mapStateToProps,mapDispatchToProps) (Project)
