@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
 import { FormStyles } from '../styles/Form'
 import { useParams } from 'react-router-dom'
-
+import {COLUMN} from '../CONSTANTS'
 const ColumnForm = ({open,toggleModal,name,title,submit,id}) => {
 
     const [values, setValues] = useState({name})
@@ -19,7 +19,7 @@ const ColumnForm = ({open,toggleModal,name,title,submit,id}) => {
     const handleSubmit = (event) => {
        
        event.preventDefault()
-       submit({id,...values,projectID},toggleModal) 
+       submit({id,...values,projectID,type:COLUMN},toggleModal) 
        !id && setValues({name:""})
     }
 

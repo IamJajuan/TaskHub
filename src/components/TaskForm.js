@@ -4,7 +4,7 @@ import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } f
 import { FormStyles } from '../styles/Form'
 import {removeTasks} from '../actions/tasks/TaskActions'
 import { connect } from 'react-redux'
-
+import {TASK} from '../CONSTANTS'
 const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID,removeTasks,projectID}) => {
 
     const [values, setValues] = useState({name,description})
@@ -23,7 +23,7 @@ const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID,re
        
        event.preventDefault()
        console.log(projectID)
-       submit({id,...values,columnID,projectID},toggleModal) 
+       submit({id,...values,columnID,projectID,type:TASK},toggleModal) 
        setValues({name:"",description:"",cost:"",stage:"",priority:""})
     }
 
