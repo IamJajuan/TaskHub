@@ -2,7 +2,7 @@ import { Box,Typography } from '@material-ui/core'
 import React,{useState} from 'react'
 import { connect } from 'react-redux'
 import Column from '../components/Column'
-import NewColumn from '../components/NewColumn'
+import ColumnAdder from '../components/ColumnAdder'
 import {selectProject,selectProjectColumns} from '../selectors/projectSelectors'
 import PropTypes from 'prop-types'
 import { DragDropContext,Droppable } from 'react-beautiful-dnd';
@@ -75,7 +75,7 @@ const Project = ({project,match,columns,reorderTasks,reorderColumns}) => {
 
 </Droppable>
 </DragDropContext>
-          <NewColumn open = {openForm} toggleModal = {toggleModal}/>
+          <ColumnAdder open = {openForm} toggleModal = {toggleModal}/>
           </Box>
  
         </Box>
