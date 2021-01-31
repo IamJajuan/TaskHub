@@ -24,10 +24,18 @@ const Project = ({project,match,columns,reorderTasks,reorderColumns}) => {
      */
     const handleDrag = (obj) => {
 
-      if (obj.destination) {
+      const {destination,source} = obj
+      if (destination) {
+
         
-        obj.type === TASK ? reorderTasks(obj) : reorderColumns(obj)
+        if (!(destination.droppableId === source.droppableId && destination.index === source.index)) {
+          
+          obj.type === TASK ? reorderTasks(obj) : reorderColumns(obj)
+
+        }
+        
       }
+
 
   
 
