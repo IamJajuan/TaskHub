@@ -2,7 +2,6 @@ import { Container } from '@material-ui/core'
 import React,{useState} from 'react'
 import ProjectsHeader from '../components/ProjectsHeader'
 import ProjectCards from '../components/ProjectCards'
-import Pagination from '@material-ui/lab/Pagination';
 import ProjectForm from '../components/ProjectForm';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';

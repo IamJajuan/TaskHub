@@ -10,10 +10,7 @@ const TaskCard = ({name,description,id,projectID,updateTask,columnID,index}) => 
     
   const [open, setOpen] = useState(false)
 
-  const editTask = (vals,close) => {
-      console.log(vals)
-      close()
-  }
+
     const toggleModal = () => setOpen(prev => !prev)
     return (
         
