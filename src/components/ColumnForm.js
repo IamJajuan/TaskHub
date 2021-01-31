@@ -53,7 +53,6 @@ ColumnForm.propTypes = {
     id:PropTypes.string,
     title:PropTypes.string.isRequired,
     submit:PropTypes.func.isRequired,
-    projectID:PropTypes.string.isRequired,
 }
 
 export default ColumnForm
