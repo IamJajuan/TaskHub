@@ -26,7 +26,6 @@ const Home = ({projects,addProject}) => {
 <div>
 <ProjectsHeader toggleModal = {toggleModal} />
 <ProjectCards projects = {projects} />
-{projects.length > 12 && <Pagination style = {{marginTop:'2em'}} count={10} variant="outlined" shape="rounded" />}
 
 </div>
 
