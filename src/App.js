@@ -10,6 +10,7 @@ import Project from './pages/Project'
 import { GlobalStyles } from './styles/Global';
 import { Provider } from 'react-redux';
 import { store } from './Store';
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           <Route path = "/project/:id" component = {Project}  />
           <Route path = "/login" component = {Login} />
           <Route path = "/signup" component = {SignUp} />
+          <Route path="*"  component = {NotFound}/>
+            
+         
           </Switch>
 
         </div>
