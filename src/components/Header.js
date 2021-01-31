@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types';
-import { AppBar, Toolbar,Typography,Button } from '@material-ui/core';
+import { AppBar, Toolbar,Typography,Button, IconButton } from '@material-ui/core';
 import { HeaderStyles } from '../styles/Header';
 import { NavLink } from 'react-router-dom';
+import { GitHub, Home } from '@material-ui/icons';
 
 
 const Header = ({isAuth}) => {
@@ -15,12 +16,14 @@ const Header = ({isAuth}) => {
         Taskhub
     </Typography>
     <div>
-       {isAuth ? <Fragment>
-           <Button to = "/" color = "inherit" component = {NavLink}>
-               Home
-           </Button>
-        <Button color = "inherit" >Logout </Button>
-       </Fragment> : <Fragment></Fragment>}
+
+           <IconButton to = "/" color = "inherit" component = {NavLink}>
+               <Home />
+           </IconButton>
+        <IconButton href = "#" color = "inherit">
+            <GitHub  />
+        </IconButton>
+      
 
     </div>
 </Toolbar>
