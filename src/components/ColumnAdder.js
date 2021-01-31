@@ -7,7 +7,7 @@ import {addColumn} from '../actions/columns/ColumnActions'
 import { connect } from 'react-redux'
 
 
-const NewColumn = ({open,toggleModal,addColumn}) => {
+const ColumnAdder = ({open,toggleModal,addColumn}) => {
 
    
     return (
@@ -27,8 +27,8 @@ const mapDispatchToProps = {
     
     addColumn,
   }
-NewColumn.propTypes = {
+ColumnAdder.propTypes = {
 
     addColumn:PropTypes.func.isRequired
 }
-export default connect(null,mapDispatchToProps)(NewColumn)
+export default connect(null,mapDispatchToProps)(ColumnAdder)
