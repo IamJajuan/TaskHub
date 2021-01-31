@@ -25,7 +25,7 @@ const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
     const handleSubmit = (event) => {
        
         event.preventDefault()
-       submit({id,...values},history.push) 
+       submit({id,...values},!id ? history.push : toggleModal )   
        setValues({name:"",description:""})
     }
     return (

@@ -22,7 +22,6 @@ const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID,re
     const handleSubmit = (event) => {
        
        event.preventDefault()
-       console.log(projectID)
        submit({id,...values,columnID,projectID,type:TASK},toggleModal) 
        setValues({name:"",description:"",cost:"",stage:"",priority:""})
     }
