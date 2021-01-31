@@ -9,6 +9,7 @@ import { DragDropContext,Droppable } from 'react-beautiful-dnd';
 import {reorderTasks} from '../actions/tasks/TaskActions'
 import {reorderColumns} from '../actions/columns/ColumnActions'
 import { COLUMN, TASK } from '../CONSTANTS'
+import NotFound from './NotFound'
 
 const Project = ({project,match,columns,reorderTasks,reorderColumns}) => {
 
@@ -18,6 +19,12 @@ const Project = ({project,match,columns,reorderTasks,reorderColumns}) => {
     const toggleModal = () => setOpenForm(prev => !prev)
     const {params} = match
     const {id} = params
+
+   if (name === "") {
+     
+    return <NotFound />
+   }
+
     /**
      * Reorder item depending on the given object type
      * @param obj  The given object
