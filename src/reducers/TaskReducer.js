@@ -24,11 +24,10 @@ switch (type) {
    const {draggableId,destination} = payload
 
 
-   let list = [...state.tasks]
-   let task = list.findIndex(task => task.id === draggableId)
-   task =list.splice(task,1)[0]
+   let tasks = [...state.tasks]
+   let task = tasks.findIndex(task => task.id === draggableId)
+   task =tasks.splice(task,1)[0]
    task.columnID = destination.droppableId
-   const tasks = list
    tasks.splice(destination.index, 0, task)
 
    return {...state,tasks}
