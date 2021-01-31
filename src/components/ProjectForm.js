@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import {FormStyles} from '../styles/Form'
 import { useHistory } from 'react-router-dom'
 
-const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
+const ProjectForm = ({id,name,title,toggleModal,submit,open}) => {
     
     const classes = FormStyles()
     const history = useHistory()
-    const [values, setValues] = useState({name , description})
+    const [values, setValues] = useState({name})
 
 
 
@@ -26,7 +26,7 @@ const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
        
         event.preventDefault()
        submit({id,...values},!id ? history.push : toggleModal )   
-       setValues({name:"",description:""})
+       setValues({name:""})
     }
     return (
        <Dialog open = {open} onClose = {toggleModal} >
@@ -35,8 +35,6 @@ const ProjectForm = ({id,name,description,title,toggleModal,submit,open}) => {
 
 <DialogContent>
                 <TextField onChange = {handleChange} required className = {classes.input} label = "Name" id = "name" name = "name" fullWidth  value = {values.name} />
-                <TextField onChange = {handleChange} className = {classes.input}  label = "Description" id = "description" name = "description" fullWidth value = {values.description} />
-
 </DialogContent>
 <DialogActions>
 <Button onClick = {toggleModal}  type = "button" color = "primary" > {`Cancel`} </Button >
@@ -56,7 +54,6 @@ ProjectForm.propTypes = {
     toggleModal: PropTypes.func.isRequired,
     title:PropTypes.string.isRequired,
     id:PropTypes.string.isRequired,
-    description:PropTypes.string.isRequired,
     name:PropTypes.string.isRequired,
     submit:PropTypes.func.isRequired,
 }

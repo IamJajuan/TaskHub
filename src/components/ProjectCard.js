@@ -10,7 +10,7 @@ import {deleteProject,updateProject} from '../actions/projects/ProjectActions'
 import { connect } from 'react-redux';
 import {removeColumns} from '../actions/columns/ColumnActions'
 import {removeTasks} from '../actions/tasks/TaskActions'
-const ProjectCard = ({id,name,description,deleteProject,updateProject,removeColumns,removeTasks}) => {
+const ProjectCard = ({id,name,deleteProject,updateProject,removeColumns,removeTasks}) => {
 
     const classes = ProjectCardStyles()
     const [openForm, setOpenForm] = useState(false)
@@ -31,7 +31,7 @@ const ProjectCard = ({id,name,description,deleteProject,updateProject,removeColu
 
               <DeleteConfirm handleDelete = {handleDelete} item = {"Project"} open = {openAlert} toggleAlert = {toggleAlert}/>
               
-                <ProjectForm open = {openForm} submit = {updateProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} description = {description}  name = {name}/>
+                <ProjectForm open = {openForm} submit = {updateProject} toggleModal = {toggleModal} title = {'Edit'}  id = {id} name = {name}/>
 
                     <Card className={classes.projectCard}>
               
@@ -39,9 +39,7 @@ const ProjectCard = ({id,name,description,deleteProject,updateProject,removeColu
                     <Typography gutterBottom variant="h5" component="h2">
                       {name}
                     </Typography>
-                    <Typography>
-                        {description}
-                    </Typography>
+      
                   </CardContent>
                   <CardActions className = {classes.projectCardActions}>
                    <div>
@@ -72,7 +70,6 @@ const mapDispatchToProps = {
 ProjectCard.propTypes = {
 
   id:PropTypes.string.isRequired,
-  description:PropTypes.string.isRequired,
   name:PropTypes.string.isRequired,
   deleteProject:PropTypes.func.isRequired,
   updateProject:PropTypes.func.isRequired,

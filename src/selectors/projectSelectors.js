@@ -50,8 +50,13 @@ export const getColumnID = (state,props) => {
     return id
 }
 
+/**
+ * 
+ * @param state The given state
+ * @returns An array of tasks with the given state
+ */
 const getTasks = state => state.tasks.tasks
-export const selectTasks = createSelector(
+export const selectColumnTasks = createSelector(
 
     [getColumnID,getTasks],(id,tasks) => (tasks.filter(task => task.columnID === id ))
 )

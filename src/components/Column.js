@@ -7,7 +7,7 @@ import TaskCard from './TaskCard'
 import TaskForm from './TaskForm'
 import {addTask} from '../actions/tasks/TaskActions'
 import { connect } from 'react-redux'
-import {selectTasks} from '../selectors/projectSelectors'
+import {selectColumnTasks} from '../selectors/projectSelectors'
 import { Droppable,Draggable } from 'react-beautiful-dnd';
 import {TASK} from '../CONSTANTS'
 const Column = ({name,id,tasks,projectID,addTask,index}) => {
@@ -58,7 +58,7 @@ addTask:PropTypes.func,
 
 const mapStateToProps = (state,ownProps) => ({
 
-    tasks:selectTasks(state,ownProps)
+    tasks:selectColumnTasks(state,ownProps)
   })
 const mapDispatchToProps = {
     
