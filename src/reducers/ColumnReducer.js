@@ -25,11 +25,11 @@ export const columnReducer = (state = initalState,{type,payload}) => {
 
 
    let columns = [...state.columns]
-   let column = columns.findIndex(task => task.id === draggableId)
+   let column = columns.findIndex(col => col.id === draggableId)
    column =columns.splice(column,1)[0]
+   columns = columns.filter(col => col.projectID === column.projectID)
    columns.splice(destination.index, 0, column)
-
-   return {...state,columns}
+   return {...state,columns:[...state.columns.filter(col => col.projectID !== column.projectID ),...columns]}
             
             
     
