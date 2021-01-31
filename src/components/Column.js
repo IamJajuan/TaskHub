@@ -20,7 +20,7 @@ const Column = ({name,id,tasks,projectID,addTask,index}) => {
       <Draggable draggableId = {id} index = {index}>
         {(provided) => (
 
-<Box  ref ={provided.innerRef}     {...provided.draggableProps}
+<Box height = "fit-content" ref ={provided.innerRef}     {...provided.draggableProps}
           {...provided.dragHandleProps} width = "280px"  marginRight= ".5em" >
 <Card>
 <CardContent>
