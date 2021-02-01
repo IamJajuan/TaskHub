@@ -3,7 +3,7 @@ import { AppBar, Toolbar,Typography, IconButton } from '@material-ui/core';
 import { HeaderStyles } from '../styles/Header';
 import { NavLink } from 'react-router-dom';
 import { GitHub, Home } from '@material-ui/icons';
-
+import {BASEURL} from '../CONSTANTS'
 
 const Header = () => {
 
@@ -16,10 +16,10 @@ const Header = () => {
     </Typography>
     <div>
 
-           <IconButton to = "/" color = "inherit" component = {NavLink}>
+           <IconButton to = {BASEURL} color = "inherit" component = {NavLink}>
                <Home />
            </IconButton>
-        <IconButton href = "#" color = "inherit">
+        <IconButton href = {`https://github.com/kingfishergod/${BASEURL}`} color = "inherit">
             <GitHub  />
         </IconButton>
       

@@ -7,6 +7,7 @@ import { GlobalStyles } from './styles/Global';
 import { Provider } from 'react-redux';
 import { store } from './Store';
 import NotFound from './pages/NotFound';
+import { BASEURL } from './CONSTANTS';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <div className = "app-content" >
 
           <Switch>
-          <Route exact path = "/" component = {Home} />
+          <Route exact path = {BASEURL} component = {Home} />
           <Route path = "/project/:id" component = {Project}  />
           <Route path="*"  component = {NotFound}/>
           </Switch>
