@@ -19,7 +19,7 @@ const Home = ({projects,addProject}) => {
     return (
         <Container component = "main" maxWidth="md">
                 <div>
-                    <h2>Heoll</h2>
+           
                 <ProjectForm id = "" open = {open} submit = {addProject} name = {""} description = {""} toggleModal = {toggleModal} title = {"Add"} />
 
                     </div>
