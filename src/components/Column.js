@@ -7,7 +7,7 @@ import TaskCard from './TaskCard'
 import TaskForm from './TaskForm'
 import {addTask} from '../actions/tasks/TaskActions'
 import { connect } from 'react-redux'
-import {selectColumnTasks} from '../selectors/projectSelectors'
+import {selectColumnTasks} from '../selectors'
 import { Droppable,Draggable } from 'react-beautiful-dnd';
 import {TASK} from '../CONSTANTS'
 const Column = ({name,id,tasks,projectID,addTask,index}) => {
