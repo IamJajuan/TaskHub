@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
 import { FormStyles } from '../styles/Form'
@@ -9,6 +9,11 @@ const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID,re
 
     const [values, setValues] = useState({name,description})
 
+    useEffect(() => {
+       
+        setValues({name,description}) 
+      
+     }, [open,name,description])
 
     const handleChange = (event) => {
 
@@ -23,7 +28,7 @@ const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID,re
        
        event.preventDefault()
        submit({id,...values,columnID,projectID,type:TASK},toggleModal) 
-       setValues({name:"",description:"",cost:"",stage:"",priority:""})
+       setValues({name:"",description:""})
     }
 
     const handleDelete = () => {
@@ -44,9 +49,9 @@ const TaskForm = ({open,toggleModal,title,submit,id,name,description,columnID,re
         </DialogContent>
         <DialogActions>
         <Button onClick = {toggleModal}  type = "button" color = "primary" > {`Cancel`} </Button >
-        <Button  type = "submit" color = "primary" > {`${title} Task`} </Button >
-        
+    
         {title === "Edit" && <Button onClick = {handleDelete}  type = "button" color = "primary" >Delete Task</Button>}
+        <Button  type = "submit" color = "primary" > {`${title} Task`} </Button >
 
         </DialogActions>
         </form>

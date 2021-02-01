@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
 import { FormStyles } from '../styles/Form'
@@ -8,6 +8,12 @@ const ColumnForm = ({open,toggleModal,name,title,submit,id}) => {
 
     const [values, setValues] = useState({name})
     const projectID = useParams().id
+    useEffect(() => {
+       
+        setValues({name}) 
+      
+     }, [open,name])
+ 
     const handleChange = (event) => {
 
         const {target} = event

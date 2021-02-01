@@ -1,5 +1,5 @@
 import { TextField,Button, Dialog, DialogTitle, DialogActions, DialogContent } from '@material-ui/core'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {FormStyles} from '../styles/Form'
 import { useHistory } from 'react-router-dom'
@@ -10,6 +10,11 @@ const ProjectForm = ({id,name,title,toggleModal,submit,open}) => {
     const history = useHistory()
     const [values, setValues] = useState({name})
 
+    useEffect(() => {
+       
+       setValues({name}) 
+     
+    }, [open,name])
 
 
     const handleChange = (event) => {
@@ -29,12 +34,12 @@ const ProjectForm = ({id,name,title,toggleModal,submit,open}) => {
        setValues({name:""})
     }
     return (
-       <Dialog open = {open} onClose = {toggleModal} >
+       <Dialog fullWidth open = {open} onClose = {toggleModal} >
 <DialogTitle className = {classes.title}>{`${title} Project`} </DialogTitle>
 <form onSubmit = {handleSubmit}>
 
 <DialogContent>
-                <TextField onChange = {handleChange} required className = {classes.input} label = "Name" id = "name" name = "name" fullWidth  value = {values.name} />
+                <TextField  onChange = {handleChange} required className = {classes.input} label = "Name" id = "name" name = "name" fullWidth  value = {values.name} />
 </DialogContent>
 <DialogActions>
 <Button onClick = {toggleModal}  type = "button" color = "primary" > {`Cancel`} </Button >

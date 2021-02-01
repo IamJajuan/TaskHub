@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import { connect } from 'react-redux'
 import Column from '../components/Column'
 import ColumnAdder from '../components/ColumnAdder'
-import {selectProject,selectProjectColumns} from '../selectors/projectSelectors'
+import {selectProject,selectProjectColumns} from '../selectors'
 import PropTypes from 'prop-types'
 import { DragDropContext,Droppable } from 'react-beautiful-dnd';
 import {reorderTasks} from '../actions/tasks/TaskActions'
