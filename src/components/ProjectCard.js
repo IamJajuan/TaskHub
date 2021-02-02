@@ -10,6 +10,7 @@ import {deleteProject,updateProject} from '../actions/projects/ProjectActions'
 import { connect } from 'react-redux';
 import {removeColumns} from '../actions/columns/ColumnActions'
 import {removeTasks} from '../actions/tasks/TaskActions'
+import {BASEURL} from '../CONSTANTS'
 const ProjectCard = ({id,name,deleteProject,updateProject,removeColumns,removeTasks}) => {
 
     const classes = ProjectCardStyles()
@@ -50,7 +51,7 @@ const ProjectCard = ({id,name,deleteProject,updateProject,removeColumns,removeTa
                        <Delete />
                    </IconButton>
                    </div>
-<Button to = {`project/${id}`} type = "button" component = {Link}> 
+<Button to = {`${BASEURL}project/${id}`} type = "button" component = {Link}> 
 
 View
 </Button>

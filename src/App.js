@@ -22,7 +22,7 @@ function App() {
 
           <Switch>
           <Route exact path = {BASEURL} component = {Home} />
-          <Route path = "/project/:id" component = {Project}  />
+          <Route path = {`${BASEURL}project/:id`} component = {Project}  />
           <Route path="*"  component = {NotFound}/>
           </Switch>
 
