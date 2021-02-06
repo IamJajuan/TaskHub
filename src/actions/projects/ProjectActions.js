@@ -1,5 +1,6 @@
 import {ADDPROJECT, DELETEPROJECT, UPDATEPROJECT} from './ProjectTypes'
 import { v4 as uuidv4 } from 'uuid';
+import { BASEURL } from '../../CONSTANTS';
 
 /**
  * Add the given project to the reducer, then navigate to the project detail page when added successfully with the given function
@@ -11,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 
     proj['id'] = uuidv4()
     dispatch({ type:ADDPROJECT,payload:proj})
-    func(`project/${proj.id}`)
+    func(`${BASEURL}project/${proj.id}`)
  } 
 
  /**
@@ -27,7 +28,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 /**
  * Update the project with the given data
- * When the update is successful, it goes back to the project detail page with the given function
+ * When the update is successful, it close modal with the given function
  * @param data The given data
  * @param func The given function
  */
@@ -35,6 +36,6 @@ import { v4 as uuidv4 } from 'uuid';
  export const updateProject = (data,func) => dispatch => {
 
       dispatch({type:UPDATEPROJECT,payload:data})
-      func(`project/${data.id}`)
+      func()
 
  }
